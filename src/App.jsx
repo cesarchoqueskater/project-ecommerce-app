@@ -4,10 +4,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import Navbar from './components/Navbar'
-import ItemListContainer from './components/ItemListContainer'
+import Body from './components/Body'
 import './App.css'
 
 function App() {
@@ -15,7 +13,7 @@ function App() {
   return (
       <div>
         <Navbar/>
-        <ItemListContainer textAlign="center" textInformation="Proximamente"/>
+        <Body/>
       </div>
   )
 }

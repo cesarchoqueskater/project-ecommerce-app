@@ -1,11 +1,12 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
 
 
 function ItemListContainer(props) {
 
   return (
-    <Typography variant={{ textAlign: props.textAlign}}>{props.textInformation}</Typography>
+    <div class="alert alert-primary" role="alert">
+      {props.textInformation}
+    </div>
   );
 }
 export default ItemListContainer;
