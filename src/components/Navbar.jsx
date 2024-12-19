@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link, NavLink } from 'react-router';
 import CartWidget from './CartWidget'
 
-const pages = [{ id: "mochica", name: "Mochica", endpoint: "/culture/moche" }, { id: "nazca", name: "Nazca", endpoint: "/culture/nazca" }, { id: "wiru", name: "Wiru", endpoint: "/culture/wiru"}];
+const pages = [{ id: "mochica", name: "Mochica", endpoint: "/culture/moche" }, { id: "paracas", name: "Paracas", endpoint: "/culture/paracas" }, { id: "wiru", name: "Wiru", endpoint: "/culture/wiru"}];
 
 function Navbar() {
 

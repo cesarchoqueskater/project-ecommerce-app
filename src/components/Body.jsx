@@ -47,7 +47,12 @@ function Body() {
 
   // Mostrar un mensaje de carga mientras se obtienen los datos
   if (loading) {
-    return <div>Cargando...</div>;
+    return <div className='d-flex justify-content-center mt-5'>
+            <button className="btn btn-primary" type="button" disabled>
+              <span className="spinner-border spinner-border-sm" aria-hidden="true"></span>
+              <span role="status"> Loading ...</span>
+            </button>
+          </div>;
   }
 
   // Mostrar un mensaje de error si ocurre algún problema
