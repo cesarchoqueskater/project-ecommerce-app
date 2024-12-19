@@ -19,7 +19,7 @@ function Item({ item }) {
                 <h5 className="card-title">{itemObject.title}</h5>
                 <p className="card-text">{itemObject.artistDisplayName}</p>
                 <p className="card-text">Fecha {itemObject.objectBeginDate} - {itemObject.objectEndDate}</p>
-                <button onClick = { () => navigate(`/culture/detail/${itemObject.objectID}`) } className="btn btn-primary">Ver más {itemObject.objectID} </button>
+                <button onClick = { () => navigate(`/culture/detail/${itemObject.objectID}`) } className="btn btn-primary">Ver más</button>
             </div>
         </div>
       );
