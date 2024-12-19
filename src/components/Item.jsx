@@ -1,9 +1,10 @@
-//import * as React from 'react';
 import { useState, useEffect } from 'react'
+import { useNavigate } from "react-router";
 
 function Item({ item }) {
 
     const [itemObject, setItemObject] = useState([])
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${item}`)
@@ -17,7 +18,8 @@ function Item({ item }) {
             <div className="card-body">
                 <h5 className="card-title">{itemObject.title}</h5>
                 <p className="card-text">{itemObject.artistDisplayName}</p>
-                <a href={itemObject.objectID} className="btn btn-primary">Ver más</a>
+                <p className="card-text">Fecha {itemObject.objectBeginDate} - {itemObject.objectEndDate}</p>
+                <button onClick = { () => navigate(`/culture/detail/${itemObject.objectID}`) } className="btn btn-primary">Ver más {itemObject.objectID} </button>
             </div>
         </div>
       );

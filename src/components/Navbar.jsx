@@ -1,14 +1,15 @@
 import * as React from 'react';
+import { Link, NavLink } from 'react-router';
 import CartWidget from './CartWidget'
 
-const pages = [{ id: "mochica", name: "Mochica" }, { id: "nazca", name: "Nazca" }, { id: "wiru", name: "Wiru" }];
+const pages = [{ id: "mochica", name: "Mochica", endpoint: "/culture/moche" }, { id: "nazca", name: "Nazca", endpoint: "/culture/nazca" }, { id: "wiru", name: "Wiru", endpoint: "/culture/wiru"}];
 
-function Navbar(a) {
+function Navbar() {
 
   return (
     <nav className="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">Maytu</a>
+        <Link className="navbar-brand" to="/">Maytu</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -17,7 +18,7 @@ function Navbar(a) {
             {
               pages.map((page) => (
                 <li key={page.id} className="nav-item">
-                  <a className="nav-link" href="#">{page.name}</a>
+                  <Link className="nav-link" to={page.endpoint}>{page.name}</Link>
                 </li>
               ))}
           </ul>

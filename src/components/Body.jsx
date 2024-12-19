@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router'
 
 import ItemListContainer from './ItemListContainer'
 
@@ -9,14 +10,18 @@ function Body() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const { name } = useParams();
+
+  let nameParameter = ( typeof name === "undefined") ? 'inca' : name ;
+
   useEffect(() => {
 
     const fetchData = async () => {
       try {
         setLoading(true);
-
+        
         const response = await fetch(
-          "https://collectionapi.metmuseum.org/public/collection/v1/search?q=moche&dateBegin=1700"
+          `https://collectionapi.metmuseum.org/public/collection/v1/search?q=${nameParameter}&dateBegin=1400`
         );
 
         if (!response.ok) {
@@ -27,7 +32,7 @@ function Body() {
         setItems(data.objectIDs);
 
         if (!data.objectIDs || data.objectIDs.length === 0) {
-          throw new Error("No se encontraron objectIDs");
+          throw new Error("No se encontro ningun elemento.");
         }
 
       } catch (err) {
@@ -38,7 +43,7 @@ function Body() {
     };
 
     fetchData();
-  }, []);
+  }, [nameParameter]);
 
   // Mostrar un mensaje de carga mientras se obtienen los datos
   if (loading) {
