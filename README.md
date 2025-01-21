@@ -11,7 +11,7 @@ El objetivo principal de este proyecto es implementar un sistema funcional de ca
 ---
 
 ## 📂 Estructura del Proyecto
-
+```css
 project-ecommerce-app-reactjs/
 ├── public/                 # Archivos públicos
 ├── src/                    # Código fuente principal
