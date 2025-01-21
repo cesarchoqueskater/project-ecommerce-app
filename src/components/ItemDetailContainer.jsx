@@ -1,6 +1,7 @@
 //import * as React from 'react';
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
+import ItemCount from './ItemCount';
 
 function ItemDetailContainer() {
 
@@ -12,7 +13,7 @@ function ItemDetailContainer() {
             .then(res => res.json())
             .then(res => setItemObject(res))
     }, []);
-
+    
     return (
         <div key={itemObject.objectID} className="container">
             <div className="row mt-5">
@@ -51,6 +52,9 @@ function ItemDetailContainer() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <ItemCount itemObject={itemObject}/>
                     </div>
                 </div>
                 <div className="col-sm-12 col-md-6">
