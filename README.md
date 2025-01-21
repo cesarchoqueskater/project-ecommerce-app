@@ -11,34 +11,34 @@ El objetivo principal de este proyecto es implementar un sistema funcional de ca
 ---
 
 ## 📂 Estructura del Proyecto
-```css
-project-ecommerce-app-reactjs/
-├── public/                 # Archivos públicos
-├── src/                    # Código fuente principal
-│   ├── assets/             # Recursos estáticos (imágenes, íconos, etc.)
-│   ├── components/         # Componentes reutilizables de React
-│   │   ├── Body.jsx
-│   │   ├── Cart.jsx
-│   │   ├── CartItem.jsx
-│   │   ├── CartItems.jsx
-│   │   ├── CartWidget.jsx
-│   │   ├── Item.jsx
-│   │   ├── ItemCount.jsx
-│   │   ├── ItemDetailContainer.jsx
-│   │   ├── ItemListContainer.jsx
-│   │   ├── Navbar.jsx
-│   │   ├── OrderCheckout.jsx
-│   ├── context/            # Contexto de React para el carrito
-│   │   ├── cartContext.js
-│   │   ├── CartProvider.js
-│   ├── firebase/           # Configuración de Firebase
-│   │   ├── config.js
-│   │   ├── db.js
-│   ├── App.jsx             # Componente principal de la aplicación
-│   ├── index.jsx           # Punto de entrada de la aplicación
-├── package.json            # Dependencias del proyecto
-├── .gitignore              # Archivos y carpetas ignoradas por Git
-├── README.md               # Documentación del proyecto
+    ```css
+    project-ecommerce-app-reactjs/
+    ├── public/                 # Archivos públicos
+    ├── src/                    # Código fuente principal
+    │   ├── assets/             # Recursos estáticos (imágenes, íconos, etc.)
+    │   ├── components/         # Componentes reutilizables de React
+    │   │   ├── Body.jsx
+    │   │   ├── Cart.jsx
+    │   │   ├── CartItem.jsx
+    │   │   ├── CartItems.jsx
+    │   │   ├── CartWidget.jsx
+    │   │   ├── Item.jsx
+    │   │   ├── ItemCount.jsx
+    │   │   ├── ItemDetailContainer.jsx
+    │   │   ├── ItemListContainer.jsx
+    │   │   ├── Navbar.jsx
+    │   │   ├── OrderCheckout.jsx
+    │   ├── context/            # Contexto de React para el carrito
+    │   │   ├── cartContext.js
+    │   │   ├── CartProvider.js
+    │   ├── firebase/           # Configuración de Firebase
+    │   │   ├── config.js
+    │   │   ├── db.js
+    │   ├── App.jsx             # Componente principal de la aplicación
+    │   ├── index.jsx           # Punto de entrada de la aplicación
+    ├── package.json            # Dependencias del proyecto
+    ├── .gitignore              # Archivos y carpetas ignoradas por Git
+    ├── README.md               # Documentación del proyecto
 
 
 ---
