@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
+import { getItems, getItemsCategory } from '../firebase/db';
 
 import ItemListContainer from './ItemListContainer'
 
@@ -12,10 +13,30 @@ function Body() {
 
   const { name } = useParams();
 
-  let nameParameter = ( typeof name === "undefined") ? 'inca' : name ;
+  //let nameParameter = ( typeof name === "undefined") ? 'inca' : name ;
+
+  let nameParameter = name;
 
   useEffect(() => {
 
+    try{
+      setLoading(true);  
+    
+      if(nameParameter){
+        getItemsCategory(nameParameter)
+        .then(res => setItems(res))
+      }
+      else{
+        getItems()
+        .then(res => setItems(res))
+      }
+
+    }catch (err) {
+      setError(err.message); // Capturar errores
+    } finally {
+      setLoading(false); // Fin de la carga
+    }
+    /*
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -23,6 +44,8 @@ function Body() {
         const response = await fetch(
           `https://collectionapi.metmuseum.org/public/collection/v1/search?q=${nameParameter}&dateBegin=1400`
         );
+
+        const response = await getItems();
 
         if (!response.ok) {
           throw new Error("Error al obtener los objectIDs");
@@ -41,11 +64,13 @@ function Body() {
         setLoading(false); // Fin de la carga
       }
     };
+    */
 
-    fetchData();
+    //fetchData();
   }, [nameParameter]);
 
   // Mostrar un mensaje de carga mientras se obtienen los datos
+  
   if (loading) {
     return <div className='d-flex justify-content-center mt-5'>
             <button className="btn btn-primary" type="button" disabled>
@@ -54,6 +79,7 @@ function Body() {
             </button>
           </div>;
   }
+  
 
   // Mostrar un mensaje de error si ocurre algún problema
   if (error) {
@@ -61,7 +87,6 @@ function Body() {
   }
   return (
     <div className="container-fluid mt-4">
-
       <ItemListContainer items={items} />
     </div>
 

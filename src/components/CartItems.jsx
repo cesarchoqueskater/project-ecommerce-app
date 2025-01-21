@@ -12,7 +12,7 @@ function CartItems({ items }) {
                     <ol className="list-group list-group-numbered">
                         {
                             items.map(item => (
-                                <CartItem item={item} key={item.objectId} />
+                                <CartItem item={item} key={item.objectID} />
                             ))
                         }
                     </ol>

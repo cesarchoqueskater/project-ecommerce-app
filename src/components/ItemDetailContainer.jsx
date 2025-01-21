@@ -1,6 +1,8 @@
 //import * as React from 'react';
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
+import { getItemsId } from '../firebase/db';
+
 import ItemCount from './ItemCount';
 
 function ItemDetailContainer() {
@@ -8,10 +10,17 @@ function ItemDetailContainer() {
     const [itemObject, setItemObject] = useState([])
     const { id } = useParams();
 
+    console.log("id" + id)
     useEffect(() => {
+        /*
         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`)
             .then(res => res.json())
             .then(res => setItemObject(res))
+        */
+
+        getItemsId(id)
+        .then(res => setItemObject(res[0]))
+      
     }, []);
     
     return (
