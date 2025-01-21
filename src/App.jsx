@@ -9,6 +9,7 @@ import Navbar from './components/Navbar'
 import Body from './components/Body'
 import ItemDetailContainer from './components/ItemDetailContainer'
 import Cart from './components/Cart';
+import OrderCheckout from './components/OrderCheckout';
 import './App.css'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/culture/:name" element={< Body />}></Route>
         <Route path="/culture/detail/:id" element={< ItemDetailContainer />}></Route>
         <Route path="/cart" element={< Cart />}></Route>
+        <Route path="/checkout/order" element={< OrderCheckout />}></Route>
       </Routes>
     </BrowserRouter>
   )

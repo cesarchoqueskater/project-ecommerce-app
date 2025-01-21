@@ -1,4 +1,4 @@
-import { collection, getDocs, getFirestore, query, orderBy, where, getDoc, doc } from "firebase/firestore";
+import { collection, getDocs, getFirestore, query, where, getDoc, doc, addDoc } from "firebase/firestore";
 import { app } from './config'
 
 const db = getFirestore(app)
@@ -34,15 +34,29 @@ export const getItemsId = async (id) => {
 
 export const getItemsCategory = async (category) => {
     const items = []
-
     const q = query(collection(db, "items"), where("category", "==", category));
 
     const querySnapshot = await getDocs(q);
-
     querySnapshot.forEach((doc) => {
 
         items.push(doc.data())
     });
 
     return items
+}
+
+
+export const createOrder = async (order) => {
+
+    try {
+        const docRef = collection(db, "order");
+        const querySnapshot = await addDoc(docRef , order);
+        console.log(querySnapshot)
+        console.log(querySnapshot.id)
+        return querySnapshot.id;
+
+    }catch(e){
+        console.log(e)
+    }
+
 }
