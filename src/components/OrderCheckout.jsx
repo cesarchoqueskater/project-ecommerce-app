@@ -11,6 +11,9 @@ function OrderCheckout() {
     const navigate = useNavigate();
 
     const [orderId, setOrderId] = useState();
+
+    const [isProcessing, setIsProcessing] = useState(false);
+
     const [isVisible, setIsVisible] = useState(false);
     
     const { cart, getTotal, clearCart } = useContext(CartContext)
@@ -22,6 +25,8 @@ function OrderCheckout() {
         try{
 
             event.preventDefault();
+
+            setIsProcessing(true);
             
             const formData = new FormData(event.target);
             
@@ -32,8 +37,16 @@ function OrderCheckout() {
             formObject.items = cart;
             orderDetails.push(formObject)
             
-            createOrder(orderDetails[0]).then(res => setOrderId(res))
-            setIsVisible(true)
+            createOrder(orderDetails[0]).then((res) => {
+                setOrderId(res);
+                setIsProcessing(false);  // Oculta el mensaje de procesando
+                setIsVisible(true);
+            })
+            
+            .catch((e) => {
+                setIsProcessing(false);  // Si hay error, oculta el mensaje de procesando
+                console.log(e);
+            });
 
 
             //formData = new FormData('')
@@ -42,6 +55,7 @@ function OrderCheckout() {
 
         }catch(e){
             console.log(e);
+            setIsProcessing(false);
             return(
                 <div className="alert alert-danger" role="alert">
                     Error {e}
@@ -72,7 +86,12 @@ function OrderCheckout() {
                                             <label htmlFor="formControlPhoneNumber" className="form-label">Phone Number</label>
                                             <input type="number" className="form-control" name="phoneNumber" id="formControlPhoneNumber" placeholder="Enter phone number" required/>
                                         </div>
-                                        <button type="submit" className="btn btn-success">Create Order</button>
+                                        { isProcessing && (
+                                            <div className="alert alert-info" role="alert">
+                                                Procesando tu orden...
+                                            </div>
+                                        )}
+                                        <button type="submit" className="btn btn-success" disabled={isProcessing}>Create Order</button>
                                     </form>
                                 </div>
                                 <div className="card-footer text-body-secondary text-end">
@@ -111,15 +130,3 @@ function OrderCheckout() {
 };
 
 export default OrderCheckout
-
-
-
-/*
-<div className="alert alert-success d-flex align-items-center mt-5" role="alert">
-<svg className="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlinkHref="#check-circle-fill" /></svg>
-<div>
-An example success alert with an icon
-</div>
-</div>
-
-*/

@@ -44,4 +44,3 @@ function Cart() {
 
 
 export default Cart
-//<Button variant='danger' className='mt-3' onClick={() => clear("clear")}>Limpiar Carrito de Compra</Button>

@@ -8,21 +8,41 @@ import ItemCount from './ItemCount';
 function ItemDetailContainer() {
 
     const [itemObject, setItemObject] = useState([])
+    const [loading, setLoading] = useState(true);
     const { id } = useParams();
 
-    console.log("id" + id)
+
     useEffect(() => {
-        /*
-        fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`)
-            .then(res => res.json())
-            .then(res => setItemObject(res))
-        */
+
+        setLoading(true);
 
         getItemsId(id)
         .then(res => setItemObject(res[0]))
+
+        getItemsId(id)
+            .then(res => {
+                setItemObject(res[0]); 
+            })
+            .catch(err => {
+                console.error("Error: ", err);
+            })
+            .finally(() => {
+                setLoading(false); 
+            });
       
     }, []);
-    
+
+    if (loading) {
+        return (
+            <div className="d-flex justify-content-center mt-5">
+                <button className="btn btn-primary" type="button" disabled>
+                    <span className="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span role="status">Loading...</span>
+                </button>
+            </div>
+        );
+    }
+
     return (
         <div key={itemObject.objectID} className="container">
             <div className="row mt-5">

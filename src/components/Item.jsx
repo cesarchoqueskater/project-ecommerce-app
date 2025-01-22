@@ -21,47 +21,6 @@ function Item({ item }) {
     }
   }, []);
 
-  /*
-
-  useEffect(() => {
-      fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${item}`)
-          .then(res => res.json())
-          .then(res => setItemObject(res))
-  }, []);
-  */
-  /*
-  useEffect(() => {
-
-      const fetchData = async () => {
-        try {
-          setLoading(true);
-          
-          const response = await fetch(
-            `https://collectionapi.metmuseum.org/public/collection/v1/objects/${item}`
-          );
-  
-          if (!response.ok) {
-            throw new Error("Error al obtener los registros del elemento.");
-          }
-  
-          const data = await response.json();
-          setItemObject(data);
-  
-          if (!data || data.length === 0) {
-            throw new Error("No se encontro ningun elemento.");
-          }
-  
-        } catch (err) {
-          setError(err.message); 
-        } finally {
-          setLoading(false); 
-        }
-      };
-  
-      fetchData();
-    }, []);
-  */
-
   // Mostrar un mensaje de carga mientras se obtienen los datos
   if (loading) {
     return <div className='d-flex justify-content-center p-5'>
